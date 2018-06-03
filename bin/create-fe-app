@@ -1,0 +1,96 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const program = require('commander');
+const prompts = require('prompts');
+const os = require('os');
+const chalk = require('chalk');
+const pkg = require('../package.json');
+const utils = require('../utils');
+const exit = process.exit;
+
+const eol = os.EOL;
+const version = pkg.version;
+const tempPath = path.resolve(__dirname, '../templates');
+
+program.version(version)
+    .usage("  ")
+    .option('-l, --list', 'list all templates')
+    .parse(process.argv);
+
+async function start() {
+  let tempList = await collectTemplates();
+  let choices = compose(tempList);
+  
+  // cli
+  if(program.list){
+    console.log();
+    console.log(pad(1) + "All templates you can use:");
+    tempList.forEach(list => {
+      console.log(pad(2) + ' - ' + list);
+    })
+    console.log();
+    return; 
+  }
+  if(program.args.length){
+    console.log();
+    console.log(pad(1) + 'You should excute cli without option or arguments just like:');
+    console.log(pad(2) + chalk.cyan('create-fe-app'));
+    return;
+  }
+  createApplication({tempList, choices}).catch(ex => console.error(ex));
+}
+
+async function createApplication({tempList, choices}){
+  let question = [{ 
+      name : 'pname', 
+      message : 'Your project name:', 
+      type : 'text'
+    },
+    { 
+      name : 'template', 
+      message : 'Choose template:', 
+      type : 'select', 
+      initial : 0,
+      choices
+    }];
+
+  let { pname, template } = await prompts(question);
+  pname = pname || template;
+  console.log('ok', pname, template);
+}
+
+async function collectTemplates(){
+  let tempList = await utils.readdir(tempPath), ret = [];
+  let stats = tempList.map(async temp => {
+    let fullPath = path.join(tempPath, temp);
+    let st = await utils.stat(fullPath);
+    return Object.assign(st, {fullPath, temp});
+  });
+
+  (await Promise.all(stats)).forEach(stat => {
+    if(stat.isDirectory()){
+      ret.push(path.basename(stat.temp));
+    }
+  });
+  return ret;
+}
+
+function compose(choices){
+  return choices.map( choose => ({ title : choose, value : choose }))
+}
+
+function pad(level){
+  return ' '.repeat(level * 3);
+}
+
+start().catch(ex => console.error(ex));
+
+
+
+
+
+
+
+

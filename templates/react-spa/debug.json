@@ -1,0 +1,340 @@
+{
+    "bail": true,
+    "devtool": "source-map",
+    "entry": [
+        "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._react-scripts@1.1.4@react-scripts/config/polyfills.js",
+        "/Users/wangshangwen/work/pptv/bip/bip-fe2/src/index.js"
+    ],
+    "output": {
+        "path": "/Users/wangshangwen/work/pptv/bip/bip-fe2/build",
+        "filename": "static/js/[name].[chunkhash:8].js",
+        "chunkFilename": "static/js/[name].[chunkhash:8].chunk.js",
+        "publicPath": "/"
+    },
+    "resolve": {
+        "modules": [
+            "node_modules",
+            "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules"
+        ],
+        "extensions": [
+            ".web.js",
+            ".mjs",
+            ".js",
+            ".json",
+            ".web.jsx",
+            ".jsx"
+        ],
+        "alias": {
+            "babel-runtime": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._babel-runtime@6.26.0@babel-runtime",
+            "react-native": "react-native-web"
+        },
+        "plugins": [
+            {
+                "appSrc": "/Users/wangshangwen/work/pptv/bip/bip-fe2/src",
+                "allowedFiles": {}
+            }
+        ]
+    },
+    "module": {
+        "strictExportPresence": true,
+        "rules": [
+            {
+                "test": {},
+                "enforce": "pre",
+                "use": [
+                    {
+                        "options": {
+                            "eslintPath": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._eslint@4.10.0@eslint/lib/api.js",
+                            "baseConfig": {
+                                "extends": [
+                                    "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._eslint-config-react-app@2.1.0@eslint-config-react-app/index.js"
+                                ]
+                            },
+                            "ignore": false,
+                            "useEslintrc": false
+                        },
+                        "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._eslint-loader@1.9.0@eslint-loader/index.js"
+                    }
+                ],
+                "include": "/Users/wangshangwen/work/pptv/bip/bip-fe2/src"
+            },
+            {
+                "oneOf": [
+                    {
+                        "test": {},
+                        "loader": [
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._extract-text-webpack-plugin@3.0.2@extract-text-webpack-plugin/dist/loader.js",
+                                "options": {
+                                    "omit": 1,
+                                    "remove": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._style-loader@0.19.0@style-loader/index.js",
+                                "options": {
+                                    "hmr": false
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._css-loader@0.28.7@css-loader/index.js",
+                                "options": {
+                                    "importLoaders": 1,
+                                    "minimize": true,
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._postcss-loader@2.0.8@postcss-loader/lib/index.js",
+                                "options": {
+                                    "ident": "postcss"
+                                }
+                            },
+                            {
+                                "loader": "sass-loader",
+                                "options": {
+                                    "includePaths": [
+                                        "src/**/*"
+                                    ],
+                                    "sourceMap": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "test": {},
+                        "loader": [
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._extract-text-webpack-plugin@3.0.2@extract-text-webpack-plugin/dist/loader.js",
+                                "options": {
+                                    "omit": 1,
+                                    "remove": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._style-loader@0.19.0@style-loader/index.js",
+                                "options": {
+                                    "hmr": false
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._css-loader@0.28.7@css-loader/index.js",
+                                "options": {
+                                    "importLoaders": 1,
+                                    "minimize": true,
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._postcss-loader@2.0.8@postcss-loader/lib/index.js",
+                                "options": {
+                                    "ident": "postcss"
+                                }
+                            },
+                            {
+                                "loader": "less-loader",
+                                "options": {
+                                    "modifyVars": {
+                                        "@primary-color": "#1DA57A"
+                                    },
+                                    "sourceMap": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "test": [
+                            {},
+                            {},
+                            {},
+                            {}
+                        ],
+                        "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._url-loader@0.6.2@url-loader/index.js",
+                        "options": {
+                            "limit": 10000,
+                            "name": "static/media/[name].[hash:8].[ext]"
+                        }
+                    },
+                    {
+                        "test": {},
+                        "include": "/Users/wangshangwen/work/pptv/bip/bip-fe2/src",
+                        "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._babel-loader@7.1.2@babel-loader/lib/index.js",
+                        "options": {
+                            "babelrc": false,
+                            "presets": [
+                                "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._babel-preset-react-app@3.1.1@babel-preset-react-app/index.js"
+                            ],
+                            "compact": true,
+                            "plugins": [
+                                [
+                                    "import",
+                                    {
+                                        "libraryName": "antd",
+                                        "style": true
+                                    }
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "test": {},
+                        "loader": [
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._extract-text-webpack-plugin@3.0.2@extract-text-webpack-plugin/dist/loader.js",
+                                "options": {
+                                    "omit": 1,
+                                    "remove": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._style-loader@0.19.0@style-loader/index.js",
+                                "options": {
+                                    "hmr": false
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._css-loader@0.28.7@css-loader/index.js",
+                                "options": {
+                                    "importLoaders": 1,
+                                    "minimize": true,
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._postcss-loader@2.0.8@postcss-loader/lib/index.js",
+                                "options": {
+                                    "ident": "postcss"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "loader": "/Users/wangshangwen/work/pptv/bip/bip-fe2/node_modules/._file-loader@1.1.5@file-loader/dist/cjs.js",
+                        "exclude": [
+                            {},
+                            {},
+                            {},
+                            {},
+                            {}
+                        ],
+                        "options": {
+                            "name": "static/media/[name].[hash:8].[ext]"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "plugins": [
+        {
+            "replacements": {
+                "NODE_ENV": "production",
+                "PUBLIC_URL": ""
+            }
+        },
+        {
+            "options": {
+                "template": "/Users/wangshangwen/work/pptv/bip/bip-fe2/public/index.html",
+                "filename": "index.html",
+                "hash": false,
+                "inject": true,
+                "compile": true,
+                "favicon": false,
+                "minify": {
+                    "removeComments": true,
+                    "collapseWhitespace": true,
+                    "removeRedundantAttributes": true,
+                    "useShortDoctype": true,
+                    "removeEmptyAttributes": true,
+                    "removeStyleLinkTypeAttributes": true,
+                    "keepClosingSlash": true,
+                    "minifyJS": true,
+                    "minifyCSS": true,
+                    "minifyURLs": true
+                },
+                "cache": true,
+                "showErrors": true,
+                "chunks": "all",
+                "excludeChunks": [],
+                "title": "Webpack App",
+                "xhtml": false
+            }
+        },
+        {
+            "definitions": {
+                "process.env": {
+                    "NODE_ENV": "\"production\"",
+                    "PUBLIC_URL": "\"\""
+                }
+            }
+        },
+        {
+            "options": {
+                "compress": {
+                    "warnings": false,
+                    "comparisons": false
+                },
+                "mangle": {
+                    "safari10": true
+                },
+                "output": {
+                    "comments": false,
+                    "ascii_only": true
+                },
+                "sourceMap": true
+            }
+        },
+        {
+            "filename": "static/css/[name].[contenthash:8].css",
+            "id": 1,
+            "options": {}
+        },
+        {
+            "opts": {
+                "basePath": "",
+                "publicPath": "",
+                "fileName": "asset-manifest.json",
+                "stripSrc": null,
+                "transformExtensions": {},
+                "writeToFileEmit": false,
+                "cache": null,
+                "seed": null,
+                "filter": null,
+                "map": null,
+                "reduce": null
+            }
+        },
+        {
+            "config": {},
+            "options": {
+                "cacheId": "sw-precache-webpack-plugin",
+                "filename": "service-worker.js",
+                "importScripts": [],
+                "staticFileGlobsIgnorePatterns": [
+                    {},
+                    {}
+                ],
+                "mergeStaticsConfig": false,
+                "minify": true,
+                "dontCacheBustUrlsMatching": {},
+                "navigateFallback": "/index.html",
+                "navigateFallbackWhitelist": [
+                    {}
+                ]
+            },
+            "overrides": {},
+            "warnings": []
+        },
+        {
+            "resourceRegExp": {},
+            "contextRegExp": {}
+        }
+    ],
+    "node": {
+        "dgram": "empty",
+        "fs": "empty",
+        "net": "empty",
+        "tls": "empty",
+        "child_process": "empty"
+    }
+}

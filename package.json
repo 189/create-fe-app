@@ -1,0 +1,34 @@
+{
+  "name": "create-fe-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/create-fe-app",
+  "bin": {
+    "create-fe-app": "./bin/create-fe-app"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/189/create-fe-app.git"
+  },
+  "keywords": [],
+  "author": "189 <kv.wang87@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/189/create-fe-app/issues"
+  },
+  "homepage": "https://github.com/189/create-fe-app#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "glob": "^7.1.2",
+    "mkdirp": "^0.5.1",
+    "prompts": "^0.1.8",
+    "sorted-object": "^2.0.1"
+  },
+  "engines": {
+    "node": ">= 8.0"
+  }
+}

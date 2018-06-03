@@ -1,0 +1,15 @@
+.menu {
+  float: left;
+  height: 57px;
+  line-height: 57px;
+}
+
+.logo {
+  float: left;
+  height : 57px;
+  line-height : 57px;
+  width : 80px;
+  font-size : 30px;
+  color : #fff;
+  font-weight: bold;
+}

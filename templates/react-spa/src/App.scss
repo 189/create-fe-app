@@ -1,0 +1,64 @@
+
+.i-b {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.page-container, .wrap {
+  height : 100%;
+}
+.main {
+  height : 100%;
+  padding-top : 100px;  
+}
+
+.wrap .ant-layout-header {
+  background-color : #46baf5;
+  height: 57px;
+  line-height: 57px;
+}
+
+.ant-menu-horizontal,
+.ant-menu-horizontal .ant-menu-item,
+.ant-menu-horizontal .ant-menu-item a {
+  height: 100%;
+}
+
+
+.wrap .ant-menu-horizontal > .ant-menu-item > i {
+  font-size: 22px;
+  margin-right :5px;
+}
+
+.wrap .ant-menu-horizontal > .ant-menu-item > a {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.wrap .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+  background:none;
+}
+
+.wrap .ant-menu-item, .ant-menu-submenu-title {
+  padding : 0  30px;
+}
+
+.wrap .ant-menu-dark.ant-menu-horizontal {
+  border-bottom:none;
+}
+.wrap .ant-menu-dark.ant-menu-horizontal > .ant-menu-item, 
+.wrap .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+  border-bottom : none;
+}
+
+.wrap .ant-menu-horizontal > .ant-menu-item, 
+.wrap .ant-menu-horizontal > .ant-menu-submenu {
+  background: none;
+}
+
+.wrap .ant-menu.ant-menu-dark .ant-menu-item-selected, 
+.wrap .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background : none; 
+  height:100%;
+}
+
