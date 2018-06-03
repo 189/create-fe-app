@@ -10,7 +10,7 @@ const pkg = require('../package.json');
 const utils = require('../utils');
 const Application = require('../libs/application');
 const exit = process.exit;
-
+const {keys, values, assign} = Object;
 
 const eol = os.EOL;
 const version = pkg.version;
@@ -22,7 +22,8 @@ program.version(version)
     .parse(process.argv);
 
 async function start() {
-  let tempList = await collectTemplates();
+  let tempListInfo = await collectTemplates(); 
+  let tempList = keys(tempListInfo);
   let choices = compose(tempList);
   let question = [{ 
     name : 'pname', 
@@ -59,7 +60,11 @@ async function start() {
   pname = pname || template;
 
   // Now create application
-  const app = new Application({pname, template});
+  const app = new Application({
+    pname, 
+    template,
+    fullPath : tempListInfo[template]
+  });
   app.create().catch(ex => console.error(ex));
 }
 
@@ -69,12 +74,12 @@ async function collectTemplates(){
   let stats = tempList.map(async temp => {
     let fullPath = path.join(tempPath, temp);
     let st = await utils.stat(fullPath);
-    return Object.assign(st, {fullPath, temp});
+    return assign(st, {fullPath, temp});
   });
 
   (await Promise.all(stats)).forEach(stat => {
     if(stat.isDirectory()){
-      ret.push(path.basename(stat.temp));
+      ret[path.basename(stat.temp)] = stat.fullPath;
     }
   });
   return ret;
