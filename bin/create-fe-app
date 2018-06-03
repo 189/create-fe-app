@@ -3,12 +3,14 @@
 const fs = require('fs');
 const path = require('path');
 const program = require('commander');
-const prompts = require('prompts');
 const os = require('os');
 const chalk = require('chalk');
+const prompts = require('prompts');
 const pkg = require('../package.json');
 const utils = require('../utils');
+const Application = require('../libs/application');
 const exit = process.exit;
+
 
 const eol = os.EOL;
 const version = pkg.version;
@@ -22,6 +24,18 @@ program.version(version)
 async function start() {
   let tempList = await collectTemplates();
   let choices = compose(tempList);
+  let question = [{ 
+    name : 'pname', 
+    message : 'Your project name <Your folder name>:', 
+    type : 'text'
+  },
+  { 
+    name : 'template', 
+    message : 'Which kind of applycation template you want:', 
+    type : 'select', 
+    initial : 0,
+    choices
+  }];
   
   // cli
   if(program.list){
@@ -33,33 +47,22 @@ async function start() {
     console.log();
     return; 
   }
+
   if(program.args.length){
     console.log();
     console.log(pad(1) + 'You should excute cli without option or arguments just like:');
     console.log(pad(2) + chalk.cyan('create-fe-app'));
     return;
   }
-  createApplication({tempList, choices}).catch(ex => console.error(ex));
-}
-
-async function createApplication({tempList, choices}){
-  let question = [{ 
-      name : 'pname', 
-      message : 'Your project name:', 
-      type : 'text'
-    },
-    { 
-      name : 'template', 
-      message : 'Choose template:', 
-      type : 'select', 
-      initial : 0,
-      choices
-    }];
 
   let { pname, template } = await prompts(question);
   pname = pname || template;
-  console.log('ok', pname, template);
+
+  // Now create application
+  const app = new Application({pname, template});
+  app.create().catch(ex => console.error(ex));
 }
+
 
 async function collectTemplates(){
   let tempList = await utils.readdir(tempPath), ret = [];
@@ -84,6 +87,7 @@ function compose(choices){
 function pad(level){
   return ' '.repeat(level * 3);
 }
+
 
 start().catch(ex => console.error(ex));
 
