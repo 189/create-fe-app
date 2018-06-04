@@ -15,7 +15,7 @@ $ create-fe-app -l
 
 Template has been build in:
 
-- vue-spa
+- vue-spa
 - koa2
 - react-spa
 
