@@ -7,7 +7,8 @@ const os = require('os');
 const chalk = require('chalk');
 const prompts = require('prompts');
 const pkg = require('../package.json');
-const utils = require('../utils');
+const { readdir, stat, compose } = require('../libs/utils');
+const { printInfo } = require('../libs/printer');
 const Application = require('../libs/application');
 const exit = process.exit;
 const {keys, values, assign} = Object;
@@ -40,19 +41,18 @@ async function start() {
   
   // cli
   if(program.list){
-    console.log();
-    console.log(pad(1) + "All templates you can use:");
-    tempList.forEach(list => {
-      console.log(pad(2) + ' - ' + list);
-    })
-    console.log();
+    printInfo({
+      title : "All templates you can use:",
+      body : tempList
+    });
     return; 
   }
 
   if(program.args.length){
-    console.log();
-    console.log(pad(1) + 'You should excute cli without option or arguments just like:');
-    console.log(pad(2) + chalk.cyan('create-fe-app'));
+    printInfo({
+      title : 'You should excute cli without option or arguments just like:',
+      body : ['create-fe-app']
+    });
     return;
   }
 
@@ -70,29 +70,20 @@ async function start() {
 
 
 async function collectTemplates(){
-  let tempList = await utils.readdir(tempPath), ret = [];
+  let tempList = await readdir(tempPath), ret = [];
   let stats = tempList.map(async temp => {
     let fullPath = path.join(tempPath, temp);
-    let st = await utils.stat(fullPath);
+    let st = await stat(fullPath);
     return assign(st, {fullPath, temp});
   });
 
-  (await Promise.all(stats)).forEach(stat => {
-    if(stat.isDirectory()){
-      ret[path.basename(stat.temp)] = stat.fullPath;
+  (await Promise.all(stats)).forEach(st => {
+    if(st.isDirectory()){
+      ret[path.basename(st.temp)] = st.fullPath;
     }
   });
   return ret;
 }
-
-function compose(choices){
-  return choices.map( choose => ({ title : choose, value : choose }))
-}
-
-function pad(level){
-  return ' '.repeat(level * 3);
-}
-
 
 start().catch(ex => console.error(ex));
 
