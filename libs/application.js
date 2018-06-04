@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 const prompts = require('prompts');
-const { trace, printInfo, warn } = require('./printer');
+const { trace, printInfo, warn, guide, empty } = require('./printer');
 const cwd = process.cwd();
 
 module.exports = class Application extends Emitter {
@@ -28,6 +28,7 @@ module.exports = class Application extends Emitter {
           initial : true
         }];
         const answer = await prompts(question);
+        empty();
         if(!answer.cover){
           trace('Abort', 'You have abort this task');
           return;
@@ -41,14 +42,25 @@ module.exports = class Application extends Emitter {
         await fs.ensureDir(this.dest);
       }
       // copy template
-      await fs.copy(this.fullPath, this.dest, {overwrite : true});
-      trace('Initial', 'Initialize project successfully!');
+      await fs.copy(this.fullPath, this.dest, {
+        overwrite : true,
+        filter(src, dest){
+          return path.basename(src) !== 'package.json';
+        }
+      });
+      trace('Copy', `Copy ${this.template} to ${this.dest}!`);
+      trace('Rename', `Rname ${this.template} to ${this.dest}!`);
+      guide(this.pname, this.pkg.scripts);
     }
     catch(ex) {
       console.error(ex);
     }
     // console.log('create', this.pname, this.template, this.fullPath, cwd);
     return this;
+  }
+
+  get pkg(){
+    return require(path.join(this.fullPath, 'package.json'))
   }
 
 }
