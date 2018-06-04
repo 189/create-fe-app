@@ -6,7 +6,14 @@
   "bin": {
     "create-fe-app": "./bin/create-fe-app"
   },
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "react",
+    "spa",
+    "nuxt",
+    "koa2",
+    "scaffold"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
