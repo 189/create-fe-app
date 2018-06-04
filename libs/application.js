@@ -4,6 +4,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 const prompts = require('prompts');
+const utils = require('./utils');
+const ejs = require('ejs');
 const { trace, printInfo, warn, guide, empty } = require('./printer');
 const cwd = process.cwd();
 
@@ -38,9 +40,9 @@ module.exports = class Application extends Emitter {
         trace('Flush', this.pname + ' has been flush');
       }
       else {
-        // make folder
         await fs.ensureDir(this.dest);
       }
+      
       // copy template
       await fs.copy(this.fullPath, this.dest, {
         overwrite : true,
@@ -48,8 +50,10 @@ module.exports = class Application extends Emitter {
           return path.basename(src) !== 'package.json';
         }
       });
-      trace('Copy', `Copy ${this.template} to ${this.dest}!`);
-      trace('Rename', `Rname ${this.template} to ${this.dest}!`);
+      trace('Copy', `Copy ${this.template} to ${this.pname}`);
+      this.makePkg();
+      trace('Create', 'Create package.json');
+      trace('Initialize', 'Initialize done, have fun');
       guide(this.pname, this.pkg.scripts);
     }
     catch(ex) {
@@ -63,5 +67,11 @@ module.exports = class Application extends Emitter {
     return require(path.join(this.fullPath, 'package.json'))
   }
 
+  async makePkg(){
+    const pkgStr = JSON.stringify(this.pkg);
+    const pkgPath = path.join(this.dest, 'package.json');
+    const content = ejs.render(pkgStr, { name : this.pname });
+    await utils.writeFile(pkgPath, content);
+  }
 }
 
