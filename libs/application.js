@@ -71,7 +71,12 @@ module.exports = class Application extends Emitter {
     const pkgStr = JSON.stringify(this.pkg);
     const pkgPath = path.join(this.dest, 'package.json');
     const content = ejs.render(pkgStr, { name : this.pname });
-    await utils.writeFile(pkgPath, content);
+    await utils.writeFile(pkgPath, this.toJSONStr(content));
+  }
+
+  toJSONStr(json){
+    json = JSON.parse(json);
+    return JSON.stringify(json, null, 4);
   }
 }
 
