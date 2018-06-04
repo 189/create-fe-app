@@ -47,7 +47,7 @@ module.exports = class Application extends Emitter {
       await fs.copy(this.fullPath, this.dest, {
         overwrite : true,
         filter(src, dest){
-          return path.basename(src) !== 'package.json';
+          return path.basename(src) !== '_package.json';
         }
       });
       trace('Copy', `Copy ${this.template} to ${this.pname}`);
@@ -64,7 +64,7 @@ module.exports = class Application extends Emitter {
   }
 
   get pkg(){
-    return require(path.join(this.fullPath, 'package.json'))
+    return require(path.join(this.fullPath, '_package.json'))
   }
 
   async makePkg(){
