@@ -22,15 +22,15 @@ export default class HeadWraper extends React.Component {
   render(){
     return (
       <Header>
-        <div className="logo"> BIP </div>
+        <div className="logo"> LOGO </div>
         <Menu className="menu" theme="dark" onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" >
           <Menu.Item key="mail">
             <Icon type="mail" />
-            <Link to="/reports">自动化报表</Link>
+            <Link to="/reports">报表</Link>
           </Menu.Item>
           <Menu.Item key="alipay">
             <Icon type="mail" />
-            <Link to="/boards">数据看板</Link>
+            <Link to="/boards">看板</Link>
           </Menu.Item>
         </Menu>
       </Header>
