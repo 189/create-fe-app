@@ -3,8 +3,8 @@ import * as types from "../mutation-types";
 function fetch(){
   return new Promise((resolve, reject)=>{
     setTimeout(()=>{
-      resolve({ code : 0, message : 'success', data : { name : '尼古拉斯凯奇' } });
-    }, 2000 )
+      resolve({ code : 0, message : 'success', data : { name : '尼古拉斯赵四' } });
+    }, 20 )
   })
 }
 export default {
@@ -36,7 +36,6 @@ export default {
     async [types.UPDATE_USER_INFO](context) {
       const result = await fetch();
       const { code, message, data = {} } = result;
-
       context.commit(types.UPDATE_USER_INFO_PROGRESS, false);
       if (!code) {
         context.commit(types.UPDATE_USER_INFO, data);

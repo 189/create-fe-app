@@ -1,18 +1,13 @@
-<style>
-
-</style>
 <template>
   <div class="blackboard">
-    <div>{{ $route.path }}</div>
-  </div>  
+    {{ $route.path }}
+  </div>
 </template>
 <script>
 export default {
-  name : 'users',
+  name : 'home',
   data(){
-    return {
-    }
+    return {}
   }
 }
 </script>
-

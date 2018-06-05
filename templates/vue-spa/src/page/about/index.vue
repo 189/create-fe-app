@@ -1,17 +1,14 @@
-<style>
-
-</style>
 <template>
   <div class="blackboard">
     <div>{{ $route.path }}</div>
-  </div>  
+  </div>
 </template>
+
 <script>
 export default {
-  name : 'users',
+  name : 'about',
   data(){
-    return {
-    }
+    return {};
   }
 }
 </script>

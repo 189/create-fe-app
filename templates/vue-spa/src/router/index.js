@@ -1,14 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import * as types from "@/store/mutation-types";
-import store from "@/store";
-
-import Users from '@/page/users/router';
+import Home from '~/page/home/router';
+import Users from '~/page/users/router';
+import About from '~/page/about/router';
 
 Vue.use(VueRouter);
 
 const routes = [
-  ...Users
+  ...Home,
+  ...Users,
+  ...About
 ];
 
 const scrollBehavior = (to, from, savedPostion) => {
@@ -29,14 +30,9 @@ const scrollBehavior = (to, from, savedPostion) => {
   return position;
 };
 
-const r = new VueRouter({
-  mode: "history",
-  routes,
-  scrollBehavior
-});
+const r = new VueRouter({ mode: "history", routes, scrollBehavior });
 
 if (__DEV__) {
-  console.table(routes);
   window.r = r;
 }
 

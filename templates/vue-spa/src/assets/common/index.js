@@ -1,5 +1,5 @@
 export default {
   print(message){
-    console.log(message);
+    console.log("print :", message);
   }
 };
