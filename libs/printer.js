@@ -7,7 +7,7 @@ const max = 8;
 const {keys} = Object;
 
 module.exports = {
-  empty(){
+  makeEmptyLine(){
     console.log();
   },
 

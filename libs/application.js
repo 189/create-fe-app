@@ -6,8 +6,9 @@ const chalk = require('chalk');
 const prompts = require('prompts');
 const utils = require('./utils');
 const ejs = require('ejs');
-const { trace, printInfo, warn, guide, empty } = require('./printer');
+const { trace, printInfo, warn, guide, makeEmptyLine } = require('./printer');
 const cwd = process.cwd();
+const exclude = ['_package.json', 'debug.json'];
 
 module.exports = class Application extends Emitter {
   constructor({ pname,  template, fullPath, dest}){
@@ -30,7 +31,7 @@ module.exports = class Application extends Emitter {
           initial : true
         }];
         const answer = await prompts(question);
-        empty();
+        makeEmptyLine();
         if(!answer.cover){
           trace('Abort', 'You have abort this task');
           return;
@@ -47,7 +48,7 @@ module.exports = class Application extends Emitter {
       await fs.copy(this.fullPath, this.dest, {
         overwrite : true,
         filter(src, dest){
-          return path.basename(src) !== '_package.json';
+          return exclude.indexOf(path.basename(src)) === -1;
         }
       });
       trace('Copy', `Copy ${this.template} to ${this.pname}`);

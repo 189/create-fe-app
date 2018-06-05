@@ -35,10 +35,9 @@ function pad(level){
   return ' '.repeat(level * 3)
 }
 
-module.exports = {
-  ...utils,
+module.exports = Object.assign(utils, {
   compose,
   pad,
   launchedFromCmd
-};
+});
 
