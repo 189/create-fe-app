@@ -15,6 +15,8 @@
     "scaffold"
   ],
   "scripts": {
+    "dev": "babel libs -d dist --watch",
+    "build": "rimraf -rf dist && babel libs -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,9 +37,17 @@
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
     "prompts": "^0.1.8",
-    "sorted-object": "^2.0.1"
+    "rimraf": "^2.6.2",
+    "sorted-object": "^2.0.1",
+    "transform-runtime": "^0.0.0"
   },
   "engines": {
     "node": ">= 8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
   }
 }
