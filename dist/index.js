@@ -69,6 +69,14 @@ var start = function () {
             pname = _ref2.pname;
             template = _ref2.template;
 
+            if (!(pname.trim() === '')) {
+              _context.next = 20;
+              break;
+            }
+
+            throw new Error('Project name is requried');
+
+          case 20:
             pname = pname || template;
 
             // Now create application
@@ -82,7 +90,7 @@ var start = function () {
               return console.error(ex);
             });
 
-          case 20:
+          case 23:
           case 'end':
             return _context.stop();
         }
@@ -171,7 +179,7 @@ var path = require('path');
 var program = require('commander');
 var os = require('os');
 var chalk = require('chalk');
-var prompts = require('prompts');
+var prompts = require('./prompts-core');
 var pkg = require('../package.json');
 
 var _require = require('./utils'),

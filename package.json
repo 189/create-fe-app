@@ -15,6 +15,7 @@
     "scaffold"
   ],
   "scripts": {
+    "dev": "babel libs -d dist --watch",
     "build": "rimraf -rf dist && babel libs -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

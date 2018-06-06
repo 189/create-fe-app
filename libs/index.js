@@ -4,7 +4,7 @@ const path = require('path');
 const program = require('commander');
 const os = require('os');
 const chalk = require('chalk');
-const prompts = require('prompts');
+const prompts = require('./prompts-core');
 const pkg = require('../package.json');
 const { readdir, stat, compose } = require('./utils');
 const { printInfo } = require('./printer');
@@ -56,6 +56,10 @@ async function start() {
   }
 
   let { pname, template } = await prompts(question);
+  if(pname.trim() === ''){
+    throw new Error('Project name is requried');
+    return;
+  }
   pname = pname || template;
 
   // Now create application

@@ -30,7 +30,7 @@ var Emitter = require('events');
 var fs = require('fs-extra');
 var path = require('path');
 var chalk = require('chalk');
-var prompts = require('prompts');
+var prompts = require('./prompts-core');
 var utils = require('./utils');
 var ejs = require('ejs');
 
