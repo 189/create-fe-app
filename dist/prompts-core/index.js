@@ -87,7 +87,7 @@ var prompt = function () {
             }
 
             _context.next = 27;
-            return value(answer, answers, question);
+            return value(answer, Object.assign({}, answers), question);
 
           case 27:
             _context.t2 = _context.sent;

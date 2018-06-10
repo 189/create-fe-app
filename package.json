@@ -42,7 +42,7 @@
     "sorted-object": "^2.0.1"
   },
   "engines": {
-    "node": ">= 8.0"
+    "node": ">= 8.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -7,6 +7,7 @@ const chalk = require('chalk');
 const prompts = require('./prompts-core');
 const pkg = require('../package.json');
 const { readdir, stat, compose } = require('./utils');
+const checker = require('./checker');
 const { printInfo } = require('./printer');
 const Application = require('./application');
 const exit = process.exit;
@@ -15,6 +16,8 @@ const {keys, values, assign} = Object;
 const eol = os.EOL;
 const version = pkg.version;
 const tempPath = path.resolve(__dirname, '../templates');
+
+checker.version();
 
 program.version(version)
     .usage("  ")

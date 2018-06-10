@@ -187,6 +187,8 @@ var _require = require('./utils'),
     stat = _require.stat,
     compose = _require.compose;
 
+var checker = require('./checker');
+
 var _require2 = require('./printer'),
     printInfo = _require2.printInfo;
 
@@ -200,6 +202,8 @@ var keys = Object.keys,
 var eol = os.EOL;
 var version = pkg.version;
 var tempPath = path.resolve(__dirname, '../templates');
+
+checker.version();
 
 program.version(version).usage("  ").option('-l, --list', 'list all templates').parse(process.argv);
 
