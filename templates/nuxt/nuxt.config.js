@@ -21,6 +21,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    publicPath : '/static',
+    extractCSS : true,
     /*
     ** Run ESLint on save
     */
