@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const resolve = args => path.resolve(__dirname, args);
 
 module.exports = {
-  entry : { main : resolve('./index') },
+  entry : { main : resolve('./src/index') },
   output : {
     path : resolve('dist'),
     filename : '[name].min.js'
@@ -16,6 +16,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         options: { compact: false, cacheDirectory: true }
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|woff|woff2|ttf|eot|svg|swf)$/,

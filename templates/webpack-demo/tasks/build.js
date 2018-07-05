@@ -20,7 +20,6 @@ let conf = merge(require('../webpack.base.conf'), {
 });
 
 webpack(conf, function(err, stats) {
-  // console.log(' stats:',stats);
   if (err) {
       return console.error(err);
   }
