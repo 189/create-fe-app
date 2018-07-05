@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "babel libs -d dist --watch",
     "build": "rimraf -rf dist && babel libs -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "restore": "node libs/restore.js " 
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,8 @@
     "ejs": "^2.6.1",
     "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
+    "klaw": "^2.1.1",
+    "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "prompts": "^0.1.8",
     "rimraf": "^2.6.2",
