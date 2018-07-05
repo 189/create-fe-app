@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const resolve = args => path.resolve(__dirname, args);
 
 module.exports = {
-  entry : { main : resolve('./index') },
   output : {
     path : resolve('dist'),
     filename : '[name].min.js'

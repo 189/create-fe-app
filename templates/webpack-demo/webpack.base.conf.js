@@ -18,10 +18,6 @@ module.exports = {
         options: { compact: false, cacheDirectory: true }
       },
       {
-        test: /\.css$/,
-        loaders: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(png|jpg|gif|woff|woff2|ttf|eot|svg|swf)$/,
         loader: "file-loader",
         options: {

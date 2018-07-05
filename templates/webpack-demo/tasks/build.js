@@ -1,10 +1,17 @@
 
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
+const utils = require('../utils');
+
+const styleLoaders = utils.styleLoaders({extract : true});
 
 let conf = merge(require('../webpack.base.conf'), {
+    module : {
+        rules : styleLoaders
+    },
     plugins : [
         new ExtractTextPlugin({
             filename: '[name].min.css',
@@ -18,6 +25,7 @@ let conf = merge(require('../webpack.base.conf'), {
         })
     ]
 });
+// fs.writeFileSync('./debug.json', JSON.stringify(conf, null, 4));
 
 webpack(conf, function(err, stats) {
   if (err) {
