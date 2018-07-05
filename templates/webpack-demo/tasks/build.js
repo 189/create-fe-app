@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
 const utils = require('../utils');
 
-const styleLoaders = utils.styleLoaders({extract : true});
+const styleLoaders = utils.styleLoaders({extract : true, minimize : true});
 
 let conf = merge(require('../webpack.base.conf'), {
     module : {
