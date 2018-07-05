@@ -12,7 +12,7 @@ if(dir){
   const exist = fs.existsSync(dirPath);
   if(!exist){
     console.error(dir + 'is not exist : [' + dirPath + ']');
-    return process.exit(0);
+    process.exit(0);
   }
   const pkg = path.resolve(dirPath, 'package.json');
   const _pkg = path.resolve(dirPath, '_package.json');
