@@ -1,6 +1,6 @@
 {
   "name": "create-fe-app",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "",
   "main": "./bin/create-fe-app",
   "bin": {
@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "babel libs -d dist --watch",
     "build": "rimraf -rf dist && babel libs -d dist",
-    "restore": "node libs/restore.js " 
+    "restore": "node libs/restore.js "
   },
   "repository": {
     "type": "git",
