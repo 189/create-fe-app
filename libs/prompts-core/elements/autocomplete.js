@@ -1,7 +1,7 @@
 'use strict';
 
 const util = require('../util');
-const color = require('clorox');
+const color = require('turbocolor');
 const Prompt = require('./prompt');
 const { cursor } = require('sisteransi');
 

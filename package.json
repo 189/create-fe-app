@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "dev": "babel libs -d dist --watch",
-    "build": "rimraf -rf dist && babel libs -d dist",
+    "build": "rimraf -rf dist && babel libs -d dist --watch",
     "restore": "node libs/restore.js "
   },
   "repository": {
