@@ -1,6 +1,6 @@
 'use strict';
 
-var c = require('clorox');
+var c = require('turbocolor');
 var figures = require('./figures');
 
 // rendering user input.

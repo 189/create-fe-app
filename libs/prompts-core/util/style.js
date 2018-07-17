@@ -1,6 +1,6 @@
 'use strict';
 
-const c = require('clorox');
+const c = require('turbocolor');
 const figures = require('./figures');
 
 // rendering user input.

@@ -27,7 +27,7 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var util = require('../util');
-var color = require('clorox');
+var color = require('turbocolor');
 var Prompt = require('./prompt');
 
 var _require = require('sisteransi'),

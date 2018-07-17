@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "dev": "babel libs -d dist --watch",
-    "build": "rimraf -rf dist && babel libs -d dist",
+    "build": "rimraf -rf dist && babel libs -d dist --watch",
     "restore": "node libs/restore.js "
   },
   "repository": {
@@ -41,7 +41,8 @@
     "mkdirp": "^0.5.1",
     "prompts": "^0.1.8",
     "rimraf": "^2.6.2",
-    "sorted-object": "^2.0.1"
+    "sorted-object": "^2.0.1",
+    "turbocolor": "^2.3.0"
   },
   "engines": {
     "node": ">= 8.6"
