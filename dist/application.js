@@ -42,7 +42,7 @@ var _require = require('./printer'),
     makeEmptyLine = _require.makeEmptyLine;
 
 var cwd = process.cwd();
-var exclude = ['_package.json', 'debug.json'];
+var exclude = ['_package.json', 'debug.json', "node_modules"];
 
 module.exports = function (_Emitter) {
   (0, _inherits3.default)(Application, _Emitter);
@@ -131,27 +131,29 @@ module.exports = function (_Emitter) {
               case 22:
                 trace('Copy', 'Copy ' + this.template + ' to ' + this.pname);
                 this.makePkg();
-                trace('Create', 'Create package.json');
-                trace('Initialize', 'Initialize done, have fun');
+                trace('Create', 'create package.json');
+                this.makeGitIgnore();
+                trace('Create', 'create .gitignore');
+                trace('Initialize', 'Finish');
                 guide(this.pname, this.pkg.scripts);
-                _context.next = 32;
+                _context.next = 34;
                 break;
 
-              case 29:
-                _context.prev = 29;
+              case 31:
+                _context.prev = 31;
                 _context.t0 = _context['catch'](0);
 
                 console.error(_context.t0);
 
-              case 32:
+              case 34:
                 return _context.abrupt('return', this);
 
-              case 33:
+              case 35:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 29]]);
+        }, _callee, this, [[0, 31]]);
       }));
 
       function create() {
@@ -188,6 +190,44 @@ module.exports = function (_Emitter) {
       }
 
       return makePkg;
+    }()
+  }, {
+    key: 'makeGitIgnore',
+    value: function () {
+      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+        var ignorePath, exist;
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                ignorePath = path.resolve(this.dest, '.gitignore');
+                _context3.next = 3;
+                return fs.ensureFile(ignorePath);
+
+              case 3:
+                exist = _context3.sent;
+
+                if (exist) {
+                  _context3.next = 7;
+                  break;
+                }
+
+                _context3.next = 7;
+                return fs.copy(path.resolve(cwd, ".gitignore"), ignorePath);
+
+              case 7:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function makeGitIgnore() {
+        return _ref4.apply(this, arguments);
+      }
+
+      return makeGitIgnore;
     }()
   }, {
     key: 'toJSONStr',

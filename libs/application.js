@@ -8,7 +8,7 @@ const utils = require('./utils');
 const ejs = require('ejs');
 const { trace, printInfo, warn, guide, makeEmptyLine } = require('./printer');
 const cwd = process.cwd();
-const exclude = ['_package.json', 'debug.json'];
+const exclude = ['_package.json', 'debug.json', "node_modules"];
 
 module.exports = class Application extends Emitter {
   constructor({ pname,  template, fullPath, dest}){
@@ -53,8 +53,10 @@ module.exports = class Application extends Emitter {
       });
       trace('Copy', `Copy ${this.template} to ${this.pname}`);
       this.makePkg();
-      trace('Create', 'Create package.json');
-      trace('Initialize', 'Initialize done, have fun');
+      trace('Create', 'create package.json');
+      this.makeGitIgnore();
+      trace('Create', 'create .gitignore');
+      trace('Initialize', 'Finish');
       guide(this.pname, this.pkg.scripts);
     }
     catch(ex) {
@@ -73,6 +75,14 @@ module.exports = class Application extends Emitter {
     const pkgPath = path.join(this.dest, 'package.json');
     const content = ejs.render(pkgStr, { name : this.pname });
     await utils.writeFile(pkgPath, this.toJSONStr(content));
+  }
+
+  async makeGitIgnore(){
+    let ignorePath = path.resolve(this.dest, '.gitignore');
+    let exist = await fs.ensureFile(ignorePath);
+    if(!exist){
+      await fs.copy(path.resolve(cwd, ".gitignore"), ignorePath);
+    }
   }
 
   toJSONStr(json){

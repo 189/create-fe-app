@@ -116,3 +116,8 @@ exports.styleLoaders = styleLoaders = function (options = {}, forVue = false) {
     }
     return output;
 }
+
+exports.isArray = target => Array.isArray(target);
+exports.isString = target => typeof target === 'string';
+exports.isFunction = target => typeof target === 'function';
+exports.isEmptyObject = target => !Object.keys(target).length;
