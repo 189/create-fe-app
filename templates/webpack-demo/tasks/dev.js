@@ -1,7 +1,7 @@
 
 const webpack = require('webpack');
 const middleWare = require('webpack-dev-middleware');
-const hotMiddleWare = require("webpack-dev-middleware");
+const hotMiddleWare = require("webpack-hot-middleware");
 const merge = require('webpack-merge');
 const express = require('express');
 const baseConf = require("../webpack.base.conf");
