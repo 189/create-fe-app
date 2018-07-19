@@ -1,6 +1,7 @@
 
 
-// npm run rollback -- --seal --dir dirname --...
+// npm run rollback -- --seal --dir dirname
+// npm run rollback -- --dir webpack-demo
 
 const fs = require('fs-extra');
 const parseArgs = require('minimist')(process.argv.slice(2));
