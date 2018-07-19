@@ -42,7 +42,7 @@ var _require = require('./printer'),
     makeEmptyLine = _require.makeEmptyLine;
 
 var cwd = process.cwd();
-var exclude = ['_package.json', 'debug.json'];
+var exclude = ['_package.json', 'debug.json', "node_modules"];
 
 module.exports = function (_Emitter) {
   (0, _inherits3.default)(Application, _Emitter);

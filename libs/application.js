@@ -8,7 +8,7 @@ const utils = require('./utils');
 const ejs = require('ejs');
 const { trace, printInfo, warn, guide, makeEmptyLine } = require('./printer');
 const cwd = process.cwd();
-const exclude = ['_package.json', 'debug.json'];
+const exclude = ['_package.json', 'debug.json', "node_modules"];
 
 module.exports = class Application extends Emitter {
   constructor({ pname,  template, fullPath, dest}){

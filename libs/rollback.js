@@ -1,13 +1,14 @@
 
 
-// npm run rollback -- --seal --dir dirname
 // npm run rollback -- --dir webpack-demo
+// npm run seal -- --dir webpack-demo
 
 const fs = require('fs-extra');
 const parseArgs = require('minimist')(process.argv.slice(2));
 const dir = parseArgs['dir'];
 const seal = parseArgs['seal'];
 const path = require('path');
+
 
 if(dir){
   let pkg, _pkg;
