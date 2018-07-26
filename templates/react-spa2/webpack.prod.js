@@ -32,12 +32,7 @@ module.exports = {
       name: 'vendor',
       filename: 'vendor.min.js',
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: false,
-      }
-    }),
+    new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       template : resolve('index.template.html'),
       inject : true
@@ -49,7 +44,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // 编译时(compile time)插件
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
+      'process.env.NODE_ENV':  JSON.stringify('production')
     })
   ]
 };

@@ -5,6 +5,7 @@ const resolve = args => path.resolve(__dirname, args);
 
 module.exports = {
   entry : { main : resolve('./src/index') },
+  devtool : "inline-cheap-module-source-map",
   output : {
     path : resolve('dist'),
     filename : '[name].min.js'
@@ -26,6 +27,9 @@ module.exports = {
       }
     ]
   },
+  resolve : {
+    extensions: [".js", ".jsx", ".css", ".scss", ".json"]
+  },
   plugins: [
     // 构建优化插件
     new webpack.optimize.CommonsChunkPlugin({
@@ -38,11 +42,7 @@ module.exports = {
       inject : true
     }),
     
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // 编译时(compile time)插件
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    })
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 };
 

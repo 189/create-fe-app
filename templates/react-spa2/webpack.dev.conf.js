@@ -10,6 +10,10 @@ module.exports = {
     filename : '[name].min.js'
   },
   plugins: [
+    // 编译时(compile time)插件
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     // 构建优化插件
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -23,11 +27,7 @@ module.exports = {
       filename: '[name].min.css',
       allChunks: true
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // 编译时(compile time)插件
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"development"',
-    })
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 };
 

@@ -12,6 +12,7 @@ let conf = merge(require('../webpack.base.conf'), {
     module : {
         rules : styleLoaders
     },
+    devtool : false,
     plugins : [
         new ExtractTextPlugin({
             filename: '[name].min.css',
@@ -34,12 +35,12 @@ webpack(conf, function(err, stats) {
   console.log(
       stats.toString({
           colors: true,
-          hash: false,
+          hash: true,
           version: false,
           timings: false,
           assets: true, //true
-          chunks: false, //true
-          modules: false, //true
+          chunks: true, //true
+          modules: true, //true
           chunkModules: false,
           children: false,
           errorDetails: true
