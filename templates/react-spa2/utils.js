@@ -1,4 +1,5 @@
 const path =  require("path");
+const fs = require('fs');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let cssLoaders, styleLoaders;
@@ -14,7 +15,7 @@ function timestamp() {
 }
 
 function resolve(...dirs) {
-    return path.join(__dirname, "..", ...dirs);
+    return path.join(__dirname, ...dirs);
 }
 
 exports.timestamp = timestamp;
@@ -116,3 +117,11 @@ exports.styleLoaders = styleLoaders = function (options = {}, forVue = false) {
     }
     return output;
 }
+
+
+exports.print = (json)=>{
+    json = typeof json === 'string' ? json : JSON.stringify(json, null, 4);
+    fs.writeFile(".debug.json", json, function(err){
+        if(err) return console.error(err);
+    })
+};
