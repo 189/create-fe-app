@@ -4,7 +4,8 @@ const path = require('path');
 const program = require('commander');
 const os = require('os');
 const chalk = require('chalk');
-const prompts = require('./prompts-core');
+const argvs = require('minimist')(process.argv.slice(2));
+const prompts = require('prompts');
 const pkg = require('../package.json');
 const { readdir, stat, compose } = require('./utils');
 const checker = require('./checker');
@@ -20,7 +21,7 @@ const tempPath = path.resolve(__dirname, '../templates');
 checker.version();
 
 program.version(version)
-    .usage("  ")
+    .usage("<Your_project_name>")
     .option('-l, --list', 'list all templates')
     .parse(process.argv);
 
@@ -28,14 +29,16 @@ async function start() {
   let tempListInfo = await collectTemplates(); 
   let tempList = keys(tempListInfo);
   let choices = compose(tempList);
-  let question = [{ 
-    name : 'pname', 
-    message : 'Your project name <Your folder name>:', 
-    type : 'text'
-  },
+  let pname = argvs._[0];
+  let question = [
+  // { 
+  //   name : 'pname', 
+  //   message : 'Your project name <Your folder name>:', 
+  //   type : 'text'
+  // },
   { 
     name : 'template', 
-    message : 'Which kind of applycation template you want:', 
+    message : 'Which kind of template do you want:', 
     type : 'select', 
     initial : 0,
     choices
@@ -50,20 +53,21 @@ async function start() {
     return; 
   }
 
-  if(program.args.length){
-    printInfo({
-      title : 'You should excute cli without option or arguments just like:',
-      body : ['create-fe-app']
-    });
-    return;
-  }
+  // if(program.args.length){
+  //   printInfo({
+  //     title : 'You should excute cli without option or arguments just like:',
+  //     body : ['create-fe-app']
+  //   });
+  //   return;
+  // }
 
-  let { pname, template } = await prompts(question);
-  if(pname.trim() === ''){
-    throw new Error('Project name is requried');
-    return;
-  }
-  pname = pname || template;
+  let { template } = await prompts(question);
+  // if(pname.trim() === ''){
+  //   throw new Error('Project name is requried');
+  //   return;
+  // }
+
+  // pname = pname || template;
 
   // Now create application
   const app = new Application({
@@ -92,3 +96,8 @@ async function collectTemplates(){
 }
 
 start().catch(ex => console.error(ex));
+
+
+process.on('exit', (code) => {
+  console.log(`Bye ~`);
+});

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('../dist/index');
+require('../libs/index');
 
 
 

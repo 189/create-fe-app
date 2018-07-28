@@ -13,7 +13,7 @@ const exclude = ['_package.json', 'debug.json', "node_modules"];
 module.exports = class Application extends Emitter {
   constructor({ pname,  template, fullPath, dest}){
     super();
-    this.pname = pname;
+    this.pname = pname || "";
     this.template = template;
     this.fullPath = fullPath;
     this.dest = path.join(cwd, this.pname);
@@ -27,18 +27,18 @@ module.exports = class Application extends Emitter {
         const question = [{
           type : "confirm",
           name : 'cover',
-          message : `The folder name ${chalk.red(this.pname)} has been exists, overwrite ? `,
+          message : `文件夹已经存在，是否覆盖 ? `,
           initial : true
         }];
         const answer = await prompts(question);
         makeEmptyLine();
         if(!answer.cover){
-          trace('Abort', 'You have abort this task');
+          trace('Abort', '任务取消');
           return;
         }
         // Flush all files in folder
         await fs.emptyDir(this.dest);
-        trace('Flush', this.pname + ' has been flush');
+        trace('Flush', this.pname + ' 已经被清空');
       }
       else {
         await fs.ensureDir(this.dest);
@@ -52,12 +52,12 @@ module.exports = class Application extends Emitter {
         }
       });
       trace('Copy', `Copy ${this.template} to ${this.pname}`);
-      this.makePkg();
+      await this.makePkg();
       trace('Create', 'create package.json');
-      this.makeGitIgnore();
+      await this.makeGitIgnore();
       trace('Create', 'create .gitignore');
       trace('Initialize', 'Finish');
-      guide(this.pname, this.pkg.scripts);
+      await guide(this.pname, this.pkg.scripts);
     }
     catch(ex) {
       console.error(ex);
@@ -81,7 +81,7 @@ module.exports = class Application extends Emitter {
     let ignorePath = path.resolve(this.dest, '.gitignore');
     let exist = await fs.ensureFile(ignorePath);
     if(!exist){
-      await fs.copy(path.resolve(cwd, ".gitignore"), ignorePath);
+      await fs.copy(path.resolve(__dirname, '..', ".gitignore"), ignorePath);
     }
   }
 
