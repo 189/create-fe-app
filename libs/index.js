@@ -98,6 +98,6 @@ async function collectTemplates(){
 start().catch(ex => console.error(ex));
 
 
-process.on('exit', (code) => {
-  console.log(`Bye ~`);
-});
+// process.on('exit', (code) => {
+//   console.log(`Bye ~`);
+// });

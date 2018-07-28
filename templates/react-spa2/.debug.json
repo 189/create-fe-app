@@ -1,0 +1,151 @@
+{
+    "entry": {
+        "main": "/Users/wangshangwen/work/git/create-fe-app/fx/src/app"
+    },
+    "devtool": "cheap-module-eval-source-map",
+    "output": {
+        "path": "/Users/wangshangwen/work/git/create-fe-app/fx/dist",
+        "filename": "[name].min.js"
+    },
+    "module": {
+        "rules": [
+            {
+                "test": {},
+                "exclude": {},
+                "loader": "babel-loader",
+                "options": {
+                    "compact": false,
+                    "cacheDirectory": true
+                }
+            },
+            {
+                "test": {},
+                "loader": "file-loader",
+                "options": {
+                    "name": "[name]_[sha512:hash:base64:7].[ext]"
+                }
+            },
+            {
+                "test": {},
+                "use": [
+                    "style-loader",
+                    {
+                        "loader": "css-loader",
+                        "options": {
+                            "minimize": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "postcss-loader"
+                ]
+            },
+            {
+                "test": {},
+                "use": [
+                    "style-loader",
+                    {
+                        "loader": "css-loader",
+                        "options": {
+                            "minimize": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "postcss-loader",
+                    {
+                        "loader": "sass-loader",
+                        "options": {
+                            "indentedSyntax": false,
+                            "sourceMap": true
+                        }
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "use": [
+                    "style-loader",
+                    {
+                        "loader": "css-loader",
+                        "options": {
+                            "minimize": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "postcss-loader",
+                    {
+                        "loader": "sass-loader",
+                        "options": {
+                            "sourceMap": true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "resolve": {
+        "alias": {
+            "~": "/Users/wangshangwen/work/git/create-fe-app/fx/src",
+            "styles": "/Users/wangshangwen/work/git/create-fe-app/fx/src/assets/styles",
+            "common": "/Users/wangshangwen/work/git/create-fe-app/fx/src/assets/common",
+            "pub": "/Users/wangshangwen/work/git/create-fe-app/fx/src/pub"
+        },
+        "extensions": [
+            ".js",
+            ".jsx",
+            ".css",
+            ".scss",
+            ".json"
+        ]
+    },
+    "plugins": [
+        {
+            "definitions": {
+                "common": "common"
+            }
+        },
+        {
+            "chunkNames": [
+                "vendor"
+            ],
+            "ident": "/Users/wangshangwen/work/git/create-fe-app/fx/node_modules/._webpack@3.12.0@webpack/lib/optimize/CommonsChunkPlugin.js0"
+        },
+        {
+            "chunkNames": [
+                "manifest"
+            ],
+            "minChunks": null,
+            "ident": "/Users/wangshangwen/work/git/create-fe-app/fx/node_modules/._webpack@3.12.0@webpack/lib/optimize/CommonsChunkPlugin.js1"
+        },
+        {
+            "options": {
+                "template": "/Users/wangshangwen/work/git/create-fe-app/fx/index.template.html",
+                "filename": "index.html",
+                "hash": false,
+                "inject": true,
+                "compile": true,
+                "favicon": false,
+                "minify": false,
+                "cache": true,
+                "showErrors": true,
+                "chunks": "all",
+                "excludeChunks": [],
+                "title": "Webpack App",
+                "xhtml": false
+            }
+        },
+        {},
+        {
+            "definitions": {
+                "process.env.NODE_ENV": "\"development\""
+            }
+        },
+        {
+            "options": {}
+        },
+        {
+            "options": {},
+            "fullBuildTimeout": 200,
+            "requestTimeout": 10000
+        }
+    ]
+}
