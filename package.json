@@ -1,6 +1,6 @@
 {
   "name": "create-fe-app",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "",
   "main": "./bin/create-fe-app",
   "bin": {
