@@ -35,9 +35,29 @@ function pad(level){
   return ' '.repeat(level * 3)
 }
 
+
+function versionCompare(ver1, ver2){
+  let v1 = ver1.split('.');
+  let v2 = ver2.split('.');
+  let max = Math.max(v1.length, v2.length);
+  for(let i = 0; i < max; i++){
+    v1[i] = typeof v1[i] === 'undefined' ? 0 : parseInt(v1[i]);
+    v2[i] = typeof v2[i] === 'undefined' ? 0 : parseInt(v2[i]);
+    if(v1[i] < v2[i]){
+      return -1;
+    }
+    if(v1[i] > v[i]){
+      return 1;
+    }
+  }
+  return 0;
+}
+
+
 module.exports = Object.assign(utils, {
   compose,
   pad,
-  launchedFromCmd
+  launchedFromCmd,
+  versionCompare
 });
 

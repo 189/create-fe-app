@@ -7,7 +7,8 @@ module.exports = {
   entry : { main : resolve('./src/index') },
   output : {
     path : resolve('dist'),
-    filename : '[name].min.js'
+    filename : '[name].min.js',
+    publicPath : '/'
   },
   module: {
     rules: [

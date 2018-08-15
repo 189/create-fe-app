@@ -6,7 +6,7 @@ module.exports = {
   version(){
     // console.log(parseFloat(versions.node));
     // exit(0);
-    if(parseFloat(versions.node) < 8.6){
+    if( versionCompare(versions.node, 8.6) === -1){
       console.error(`
         Version is ${versions.node} \n
         Your current version is ${parseFloat(versions.node)}\n
