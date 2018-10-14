@@ -1,6 +1,7 @@
 
 
 const {versions, exit} = process;
+const versionCompare = require('./utils').versionCompare;
 
 module.exports = {
   version(){

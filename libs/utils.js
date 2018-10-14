@@ -37,8 +37,8 @@ function pad(level){
 
 
 function versionCompare(ver1, ver2){
-  let v1 = ver1.split('.');
-  let v2 = ver2.split('.');
+  let v1 = ver1.toString().split('.');
+  let v2 = ver2.toString().split('.');
   let max = Math.max(v1.length, v2.length);
   for(let i = 0; i < max; i++){
     v1[i] = typeof v1[i] === 'undefined' ? 0 : parseInt(v1[i]);
@@ -46,7 +46,7 @@ function versionCompare(ver1, ver2){
     if(v1[i] < v2[i]){
       return -1;
     }
-    if(v1[i] > v[i]){
+    if(v1[i] > v2[i]){
       return 1;
     }
   }
